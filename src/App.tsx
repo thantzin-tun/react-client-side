@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { RouteCom } from "./router/router";
+import { GlobalStyle } from "./theme";
+// import { HeaderCom, FooterCom } from "./components";
+import { ThemeProvider } from "styled-components";
+import * as theme from "./theme";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
+// import { Login } from "screen/login/login";
+
+type AppProps = {};
+
+export const App: React.FC<AppProps> = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          {/* <HeaderCom /> */}
+          <RouteCom />
+          {/* <FooterCom /> */}
+          {/* <Login /> */}
+        </ThemeProvider>
+      </BrowserRouter>
+    </>
   );
-}
+};
 
 export default App;
